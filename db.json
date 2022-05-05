@@ -1,0 +1,58 @@
+{
+  "project": [
+    {
+      "situation": "disponivel",
+      "chassi": "2134523",
+      "renavam": "234523532",
+      "placa": "ewffsad",
+      "ano": "2134",
+      "cor": "fsdf",
+      "modelo": "GFASD",
+      "owner": "MARIA GADU",
+      "id": 7
+    },
+    {
+      "situation": "disponivel",
+      "chassi": "21421",
+      "renavam": "12421",
+      "placa": "21342121",
+      "ano": "2314",
+      "cor": "safa",
+      "modelo": "FASFSAF",
+      "owner": "MARIA",
+      "id": 8
+    }
+  ],
+  "owner": [
+    {
+      "telefonetwo": "10251006551",
+      "telefone": "00024155652",
+      "cnh": "226522236541",
+      "rg": "4666622366",
+      "cpf": "45466723",
+      "nascimento": "1986-12-11",
+      "nome": "MARIA GADU",
+      "id": 4
+    },
+    {
+      "telefonetwo": "38923483284",
+      "telefone": "234884234328",
+      "cnh": "94890234582",
+      "rg": "9234892348",
+      "cpf": "7129783494",
+      "nascimento": "1993-12-23",
+      "nome": "GABRIEL",
+      "id": 5
+    },
+    {
+      "telefonetwo": "234232",
+      "telefone": "32423432",
+      "cnh": "4234234",
+      "rg": "4214",
+      "cpf": "12341412",
+      "nascimento": "2019-04-21",
+      "nome": "MARIA",
+      "id": 6
+    }
+  ]
+}
