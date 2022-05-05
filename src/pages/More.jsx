@@ -40,21 +40,21 @@ const More = () => {
                             <div className='line col-11'></div>
                                 <div className="d-flex justify-content-around">
                                     <div className="col-5">
-                                        <h4>Cor:</h4>
+                                        <h4 className="title">Cor:</h4>
                                         <p className='input'>{post.cor}</p>
-                                        <h4>Ano:</h4>
+                                        <h4 className="title">Ano:</h4>
                                         <p className="input">{post.ano}</p>
-                                        <h4>Placa:</h4>
+                                        <h4 className="title">Placa:</h4>
                                         <p className="input">{post.placa}</p>
-                                        <h4>Dono:</h4>
+                                        <h4 className="title">Dono:</h4>
                                         <p className="input">{post.owner}</p>
                                     </div>
                                     <div className="col-5">
-                                        <h4>Renavam:</h4>
+                                        <h4 className="title">Renavam:</h4>
                                         <p className="input">{post.renavam}</p>
-                                        <h4>Chassi:</h4>
+                                        <h4 className="title">Chassi:</h4>
                                         <p className="input">{post.chassi}</p>
-                                        <h4>Situacao:</h4>
+                                        <h4 className="title">Situacao:</h4>
                                         <p className="input">{post.situation}</p>
                                     </div>
                                 </div>

@@ -5,16 +5,19 @@ import api from "./Api";
 //import css
 import '../css/project.css'
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
+import { Link, useParams } from "react-router-dom";
 
 const Owner = () => {
 
+  const [load, setLoad] = useState(false)
   const [owner ,setOwner] = useState([])
   useEffect(() => {
     setTimeout(() => {
       api.get('/owner')
       .then((response) => {
         setOwner(response.data)
+        setLoad(true)
       })
       .catch(() => {
         console.log('fail')
@@ -27,11 +30,12 @@ const Owner = () => {
     setOwner(owner.filter(owner => owner.id !== id))
   }
 
-  return ( <div>
+  return ( <div className="post col-12 d-flex flex-column  justify-content-around">
+    {!load && <Loading />}
     {owner.map((owner, key) => {
       return(
-        <div className="post col-12 d-flex justify-content-around" key={key}>
-          <div className="card col-10">
+        <div className="d-felx justify-content-around" key={key}>
+          <div className="card">
               <h3 className="title">{owner.nome}</h3>
               <div className="line"></div>
               <div className="d-flex justify-content-around">
@@ -77,7 +81,7 @@ const Owner = () => {
                 </div>
               </div>
               <div className="d-flex justify-content-around">
-                  <Link to={'/editowner'}>
+                  <Link to={{pathname: `/editowner/${owner.id}`}}>
                     <Button value={'Editar'}/>
                   </Link>
                   <Button value={'Apagar'} onClick={() => deleteOwner(owner.id)}/>

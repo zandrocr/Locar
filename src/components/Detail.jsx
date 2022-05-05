@@ -8,7 +8,6 @@ import { useParams } from 'react-router-dom';
 //import react
 import React, {useEffect, useState} from "react";
 
-
 const Note = () => {
 
     const {id} = useParams()
@@ -34,8 +33,8 @@ const Note = () => {
                 <div className="line"></div>
                 <div className="d-flex justify-content-around align-items-center">
                     <div className="d-flex flex-column col-11">
-                        <h4>Detalhes</h4>
-                        <p autocomplete="off" className="input" type="text" name='describenote' placeholder='Digite a descrição da nota'>{note.detalhes}</p>
+                        <h4 className="title">Detalhes</h4>
+                        <p autocomplete="off" className="input" type="text" name='describenote' placeholder='Digite a descrição da nota'>{note.describe}</p>
                     </div>
                 </div>
             </form>

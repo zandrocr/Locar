@@ -52,17 +52,17 @@ const Project = () => {
                                 <div className="line"></div>
                                 <div className="d-flex justify-content-around">
                                     <div className="col-5">
-                                        <h4>Cor:</h4>
+                                        <h4 className="title">Cor:</h4>
                                         <p className="input">{post.cor}</p>
-                                        <h4>Ano:</h4>
+                                        <h4 className="title">Ano:</h4>
                                         <p className="input">{post.ano}</p>
-                                        <h4>Placa:</h4>
+                                        <h4 className="title">Placa:</h4>
                                         <p className="input">{post.placa}</p>
                                     </div>
                                     <div className="col-5">
-                                        <h4>Dono:</h4>
+                                        <h4 className="title">Dono:</h4>
                                         <p className="input">{post.owner}</p>
-                                        <h4>Situacao:</h4>
+                                        <h4 className="title">Situacao:</h4>
                                         <p className="input">{post.situation}</p>
                                     </div>
                                 </div>

@@ -117,7 +117,7 @@ const NewCar = () => {
                                 <select className='col-12 input' {...register('owner')} required>
                                     <option disabled selected value="">Selecione o tipo</option>
                                     {owner.map((owner) => (
-                                        <option key={owner.id}>{owner.nome}</option>
+                                        <option >{owner.nome}</option>
                                     ))}
                                 </select>
                             </div>
