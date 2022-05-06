@@ -9,7 +9,7 @@ import '../css/navbar.css'
 
 function Navbar (){
     return(
-        <div className="nav d-flex flex-column justify-content-start">
+        <div className="d-none nav d-sm-flex flex-column justify-content-start">
             <Link to='/'>
                 <h2>Inova</h2>
             </Link>

@@ -30,7 +30,7 @@ const Owner = () => {
     setOwner(owner.filter(owner => owner.id !== id))
   }
 
-  return ( <div className="post col-12 d-flex flex-column  justify-content-around">
+  return ( <div className="post d-flex flex-column justify-content-around">
     {!load && <Loading />}
     {owner.map((owner, key) => {
       return(
@@ -38,8 +38,8 @@ const Owner = () => {
           <div className="card">
               <h3 className="title">{owner.nome}</h3>
               <div className="line"></div>
-              <div className="d-flex justify-content-around">
-                <div className="col-5">
+              <div className="col-12 d-sm-flex justify-content-around">
+                <div className="col-sm-5">
                   <label
                   className="title"
                   style={{fontSize:'20px'}}>
@@ -59,27 +59,34 @@ const Owner = () => {
                   </label>
                   <div className="input">{owner.rg}</div>
                 </div>
-                <div className="col-5">
-                <label
-                  className="title"
-                  style={{fontSize:'20px'}}>
-                    CNH
-                  </label>
-                  <div className="input">{owner.cnh}</div>
-                  <label
-                  className="title"
-                  style={{fontSize:'20px'}}>
-                    Fone
-                  </label>
+                <div className="col-sm-5">
+                  <div className="col-12">
+                    <label
+                    className="title"
+                    style={{fontSize:'20px'}}>
+                      CNH
+                    </label>
+                    <div className="input">{owner.cnh}</div>
+                  </div>
+                  <div className="col-12">
+                    <label
+                    className="title"
+                    style={{fontSize:'20px'}}>
+                      Fone
+                    </label>
                   <div className="input">{owner.telefone}</div>
-                  <label
-                  className="title"
-                  style={{fontSize:'20px'}}>
-                    Fone2
-                  </label>
-                  <div className="input">{owner.telefonetwo}</div>
+                  </div>
+                  <div className="col-12">
+                    <label
+                    className="title"
+                    style={{fontSize:'20px'}}>
+                      Fone2
+                    </label>
+                    <div className="input">{owner.telefonetwo}</div>
+                  </div>
                 </div>
               </div>
+              <div className="line"></div>
               <div className="d-flex justify-content-around">
                   <Link to={{pathname: `/editowner/${owner.id}`}}>
                     <Button value={'Editar'}/>

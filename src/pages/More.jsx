@@ -8,6 +8,7 @@ import { Link, useParams } from 'react-router-dom';
 import React, {useEffect, useState} from "react";
 import Loading from '../components/Loading';
 import Note from '../components/Detail';
+import Button from '../components/Button';
 
 const More = () => {
     const {id} = useParams()
@@ -38,8 +39,8 @@ const More = () => {
                                 <h3 className="title" name='modelo'>{post.modelo}</h3>
                             </div>
                             <div className='line col-11'></div>
-                                <div className="d-flex justify-content-around">
-                                    <div className="col-5">
+                                <div className="d-sm-flex justify-content-around">
+                                    <div className="col-sm-5">
                                         <h4 className="title">Cor:</h4>
                                         <p className='input'>{post.cor}</p>
                                         <h4 className="title">Ano:</h4>
@@ -49,7 +50,7 @@ const More = () => {
                                         <h4 className="title">Dono:</h4>
                                         <p className="input">{post.owner}</p>
                                     </div>
-                                    <div className="col-5">
+                                    <div className="col-sm-5">
                                         <h4 className="title">Renavam:</h4>
                                         <p className="input">{post.renavam}</p>
                                         <h4 className="title">Chassi:</h4>
@@ -60,10 +61,10 @@ const More = () => {
                                 </div>
                             <div className='d-flex justify-content-around'>
                                 <Link to={'/garage'}>
-                                    <button type='button' className='btn'>Voltar</button>
+                                    <Button value={'Voltar'} />
                                 </Link>
                                 <Link to={{pathname: `/edit/${post.id}`}}>
-                                        <button className="btn">Editar</button>
+                                    <Button value={'Editar'} />
                                 </Link>
                             </div>
                         </div>

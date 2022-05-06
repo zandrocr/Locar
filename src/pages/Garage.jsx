@@ -50,8 +50,8 @@ const Project = () => {
                             <div key={key} className="card col-11">
                                 <h2>{post.modelo}</h2>
                                 <div className="line"></div>
-                                <div className="d-flex justify-content-around">
-                                    <div className="col-5">
+                                <div className="d-sm-flex justify-content-around">
+                                    <div className="col-sm-5">
                                         <h4 className="title">Cor:</h4>
                                         <p className="input">{post.cor}</p>
                                         <h4 className="title">Ano:</h4>
@@ -59,19 +59,19 @@ const Project = () => {
                                         <h4 className="title">Placa:</h4>
                                         <p className="input">{post.placa}</p>
                                     </div>
-                                    <div className="col-5">
+                                    <div className="col-sm-5">
                                         <h4 className="title">Dono:</h4>
                                         <p className="input">{post.owner}</p>
                                         <h4 className="title">Situacao:</h4>
                                         <p className="input">{post.situation}</p>
                                     </div>
                                 </div>
-                                <div className="d-flex justify-content-around">
+                                <div className="d-flex align-items-center flex-sm-row d-sm-flex justify-content-around">
                                     <Link to={{pathname: `/edit/${post.id}`}}>
-                                        <button className="btn">Editar</button>
+                                        <Button value={'Editar'} />
                                     </Link>
                                     <Link to={{pathname: `/more/${post.id}`}}>
-                                        <button className="btn">Ler mais</button>
+                                        <Button value={'Mais'} />
                                     </Link>
                                     <Button value={'Apagar'} onClick={() => deletePost(post.id)}/>
                                 </div>

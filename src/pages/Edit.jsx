@@ -67,8 +67,8 @@ const NewCar = () => {
                     </div>
 
                 <form onSubmit={handleSubmit(editPost)} className='form d-flex flex-column col-12 justify-content-around'>
-                    <div className='d-flex justify-content-around'>
-                        <div className='col-5'>
+                    <div className='d-sm-flex justify-content-around'>
+                        <div className='col-sm-5'>
                             <div className='d-flex flex-column bd-highlight'>
                                 <label className='title'>Modelo</label>
                                 <input
@@ -117,7 +117,7 @@ const NewCar = () => {
                             </div>
                         </div>
 
-                        <div className='col-5'>
+                        <div className='col-sm-5'>
                             <div className='d-flex flex-column' >
                                <label className='title'>Dono</label>
                                <select className='col-12 input' {...register('owner')} required>

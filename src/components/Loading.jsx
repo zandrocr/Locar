@@ -2,9 +2,11 @@ import styles from '../css/loading.module.css'
 import load from '../svg/loading.svg'
 
 const Loading = () => {
-    return ( <div className={styles.loader}>
+    return (
+    <div className={styles.loader}>
         <img src={load} alt="loading" className={styles.loading} />
-    </div> );
+    </div>
+    );
 }
 
 export default Loading;

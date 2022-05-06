@@ -8,6 +8,7 @@ import * as yup from 'yup'
 //import back
 import api from "./Api";
 import { Link, useNavigate } from 'react-router-dom';
+import Button from './Button';
 
 
 //menssgem de aviso de erro
@@ -44,8 +45,8 @@ const NewOwner = () => {
                     <h1 className="title">Nova Dono</h1>
                     <div className='line col-12'></div>
                     <form onSubmit={handleSubmit(addDono)} className='form d-flex flex-column col-12 justify-content-around'>
-                    <div className='d-flex justify-content-around'>
-                        <div className='col-5'>
+                    <div className='col-12 d-sm-flex justify-content-around'>
+                        <div className='col-sm-5'>
                             <div className='d-flex flex-column bd-highlight'>
                                 <label className="title">Nome</label>
                                 <input
@@ -90,7 +91,7 @@ const NewOwner = () => {
                             </div>
                         </div>
 
-                        <div className='col-5'>
+                        <div className='col-sm-5'>
                             <div className='d-flex flex-column'>
                                 <label className="title">CNH</label>
                                 <input
@@ -127,11 +128,12 @@ const NewOwner = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="line"></div>
                     <div className='d-flex justify-content-around'>
-                        <button className='btn'>Enviar</button>
+                        <Button value={'Enviar'} />
 
                         <Link to={'/ownerpage'}>
-                            <button type='button' className='btn'>Cancelar</button>
+                        <Button value={'Cancelar'} />
                         </Link>
                     </div>
                 </form>
