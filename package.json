@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "back": "json-server --watch db.json --port 5001",
+    "back": "json-server --watch db.json --port 5000",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -22,6 +22,7 @@
     "react-number-format": "^4.9.1",
     "react-router-dom": "^6.3.0",
     "react-text-mask": "^5.4.3",
+    "remask": "^0.1.0-alpha.5",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },

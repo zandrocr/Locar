@@ -9,19 +9,29 @@ import * as yup from 'yup'
 import api from "./Api";
 import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
-
+import { mask, unMask } from 'remask';
+import { useState } from 'react';
 
 //menssgem de aviso de erro
 const validationService = yup.object().shape({
     nome: yup.string().uppercase().required('O nome é obrigatório').max(30, 'Maximo de 20 caracteres.'),
     nascimento: yup.string().required('A data é obrigatória'),
-    cpf: yup.string().required('O cpf é obrigatório').max(12),
-    rg: yup.string().required('O rg é obrigatório').max(12),
+    cpf: yup.string().required('O cpf é obrigatório'),
+    rg: yup.string().required('O rg é obrigatório'),
     cnh: yup.string().required('A cnh é obrigatória').max(15, 'Maximo de 15 caracteres.'),
     telefone: yup.string().required('O telefone é obrigatório').max(12),
     telefonetwo: yup.string().max(12),
 })
-
+{/**
+const InputMask = ({ mask, onChange, ...props }) => {
+    const handleChange = ev => {
+        const originalValue = unMask(ev.target.value)
+        const maskedValue = masker(originalValue, mask)
+        onChange(maskedValue)
+    }
+    return <input {...props}  onChange={handleChange} />
+}
+ */}
 const NewOwner = () => {
 
     let navigate = useNavigate()
@@ -36,6 +46,11 @@ const NewOwner = () => {
     .catch(() => {
         console.log(errors)
     }, [])
+
+    const [ value, setvalue ] = useState([])
+    const onChange = ev => {
+        setvalue(mask(unMask(ev.target.value), ['999.999.999-99']))
+    }
 
     return (
         <div className='project d-flex justify-content-around'>
@@ -60,23 +75,26 @@ const NewOwner = () => {
                             <div className='d-flex flex-column'>
                                 <label className="title">Nascimento</label>
                                 <input
-                                type='date'
+                                type={'date'}
                                 className='input'
                                 autocomplete="off"
                                 name={'nascimento'}
                                 {...register('nascimento')}
-                                placeholder={'Digite o nascimento'}/>
+                                placeholder={'Digite o nascimento'}
+                                />
                                 <p>{errors.nascimento?.message}</p>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label className="title">CPF</label>
                                 <input
-                                type={'number'}
                                 className='input'
                                 autocomplete="off"
                                 name={'cpf'}
                                 {...register('cpf')}
-                                placeholder={'Digite o cpf'}/>
+                                placeholder={'Digite o cpf'}
+                                onChange={onChange}
+                                value={value}
+                                />
                                 <p>{errors.cpf?.message}</p>
                             </div>
                             <div className='d-flex flex-column'>
