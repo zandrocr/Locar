@@ -14,7 +14,7 @@ function Navbar (){
                 <h2>Inova</h2>
             </Link>
 
-            <nav className="navbar d-flex flex-column">
+            <nav className="navbar d-flex flex-column justify-content-start">
                 <Link to='/ownerpage' className="link">
                     <img className="img" src={company} alt="donos" />
                 </Link>
@@ -23,10 +23,7 @@ function Navbar (){
                     <img className="img" src={project} alt="garagem" />
                 </Link>
                     <p className="btn proj">Garagem</p>
-                <Link to='/contact' className="link2">
-                    <img className="img" src={contact} alt="contatos" />
-                </Link>
-                    <p className="btn cont">Contatos</p>
+
             </nav>
         </div>
 

@@ -20,7 +20,7 @@ const Home = () => {
                         <Link to='/newproject'>
                             <Button type={'button'} value={'Novo carro'} />
                         </Link>
-                        <Link to='/ownerpage'>
+                        <Link to='/newowner'>
                             <Button value={'Novo Dono'} />
                         </Link>
                     </div>
