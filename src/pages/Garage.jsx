@@ -48,7 +48,7 @@ const Project = () => {
                     post.map((post, key) => {
                         return(
                             <div key={key} className="card col-11">
-                                <h2>{post.modelo}</h2>
+                                <h2 className="title">{post.modelo}</h2>
                                 <div className="line"></div>
                                 <div className="d-sm-flex justify-content-around">
                                     <div className="col-sm-5">

@@ -1,4 +1,28 @@
 {
-  "project": [],
-  "owner": []
+  "project": [
+    {
+      "modelo": "moza",
+      "cor": "branca",
+      "ano": "2321",
+      "placa": "123-2132",
+      "owner": "gabriel",
+      "renavam": "12321321321",
+      "chassi": "32111111111111111",
+      "situation": "disponivel",
+      "id": 1,
+      "describe": ""
+    }
+  ],
+  "owner": [
+    {
+      "nome": "gabriel",
+      "nascimento": "1987-11-22",
+      "cpf": "451.234.567-86",
+      "rg": "12.545.632-4",
+      "cnh": "12335456987",
+      "telefone": "(13) 45698-5556",
+      "telefonetwo": "(12) 66554-8799",
+      "id": 1
+    }
+  ]
 }
