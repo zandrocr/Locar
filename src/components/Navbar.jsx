@@ -3,13 +3,32 @@ import { Link } from "react-router-dom";
 //imports img
 import company from '../svg/company.png'
 import project from '../svg/project.png'
-import contact from '../svg/contact.png'
 //import css
 import '../css/navbar.css'
 
 function Navbar (){
     return(
-        <div className="d-none nav d-sm-flex flex-column justify-content-start">
+        <div className="nav d-flex flex-column">
+            <Link to='/'>
+                <h2>Inova</h2>
+            </Link>
+            <nav className="navbar d-none d-flex flex-column align-items-start">
+                <Link to='/ownerpage' className="d-flex flex-column align-items-center">
+                    <img className="img" src={company} alt="donos" />
+                    <p>Donos</p>
+                </Link>
+                <Link to='/garage' className="d-flex flex-column align-items-center">
+                    <img className="img" src={project} alt="garagem" />
+                    <p>Garagem</p>
+                </Link>
+            </nav>
+        </div>
+    )
+}
+export default Navbar;
+
+{/**
+<div className="nav d-none d-sm-flex flex-column justify-content-start">
             <Link to='/'>
                 <h2>Inova</h2>
             </Link>
@@ -23,11 +42,7 @@ function Navbar (){
                     <img className="img" src={project} alt="garagem" />
                 </Link>
                     <p className="btn proj">Garagem</p>
-
             </nav>
         </div>
 
-    )
-}
-
-export default Navbar;
+*/}

@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
+import Navbar from '../components/Navbar';
 //import css
 import '../css/home.css'
 //import img
