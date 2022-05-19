@@ -1,4 +1,3 @@
-//react use
 import React, { useState, useEffect } from "react";
 //api consum
 import api from "./Api";

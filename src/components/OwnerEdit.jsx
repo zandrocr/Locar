@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 //import back
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import Api from '../components/Api';
+import Api from './Api';
 //react use
 import { useState, useEffect } from "react";
 import { mask, unMask } from 'remask';

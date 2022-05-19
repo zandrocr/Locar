@@ -16,7 +16,7 @@ const Project = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            api.get('/project')
+            api.get('/car')
             .then((response) => {
                 setPost(response.data)
                 setLoad(true)
@@ -28,7 +28,7 @@ const Project = () => {
     }, [])
 
     function deletePost(id){
-        api.delete(`/project/${id}`)
+        api.delete(`/car/${id}`)
         setPost(post.filter(posts => posts.id !== id))
     }
 
@@ -37,11 +37,11 @@ const Project = () => {
         <div className="col-10">
             <div className="d-flex flex-column">
                 <h1 className="title">Garagem</h1>
-                <Link to='/newproject'>
+                <Link to='/newcar'>
                     <button className="btn">Novo carro</button>
                 </Link>
             </div>
-
+            <div className="line"></div>
             <div className="post d-flex flex-column align-items-center">
                 {!load && <Loading />}
                 {post.length > 0 &&

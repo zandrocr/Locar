@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 //import api
-import api from '../components/Api';
+import api from './Api';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 //react use
 import { useState, useEffect } from "react";
@@ -44,7 +44,7 @@ const NewCar = () => {
         resolver: yupResolver(validationPost)
     })
     //comand edit
-    const editPost = (data) => api.put(`/project/${id}`, data)
+    const editPost = (data) => api.put(`/car/${id}`, data)
     .then(() => {
         console.log('envio efetuado')
         navigate(`../more/${id}`)
@@ -53,7 +53,7 @@ const NewCar = () => {
         console.log(errors)
     })
     useEffect(() => {
-        api.get(`/project/${id}`)
+        api.get(`/car/${id}`)
         .then((response) => {
             reset(response.data)
         })

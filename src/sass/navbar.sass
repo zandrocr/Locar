@@ -2,6 +2,8 @@
 
 .nav
     position: fixed
+    display: flex
+    flex-direction: column
     align-items: center
     top: 0vh
     height: 100vh
@@ -20,21 +22,98 @@
         cursor: pointer
 
     .navbar
-        height: 32vh
+        displa: flex
+        flex-direction: column
+        align-items: center
+        height: 50vh
 
         img
             width: 6vh
             cursor: pointer
             transition: .2s
-            border-radius: 5vh
+            border-radius: 100%
             &:hover
                 padding: 2px
                 border: 3px solid $color
 
+input[type=checkbox]
+    display: none
+    position: fixed
+    top: 0
+
+.menu
+    width: 9vh
+    height: 7vh
+    display: none
+    z-index: 100
+    position: fixed
+    top: 0
+    left: 0
+
+.menu-line
+    top: 20vh
+    background-color: $color
+    width: 7vh
+    height: .7vh
+    margin: 1vh
+    border-radius: 3vh
+    transition: .3s
+
+input[type=checkbox]:checked ~ .nav
+    height: 100vw
+    background: linear-gradient( 200deg , #000714, #01215c)
+
+
+input[type=checkbox]:checked ~ label .menu-line:nth-child(1)
+    transform: rotate(135deg)
+    position: absolute
+    top: 2vh
+
+input[type=checkbox]:checked ~ label .menu-line:nth-child(2)
+    height: 0
+
+input[type=checkbox]:checked ~ label .menu-line:nth-child(3)
+    transform: rotate(45deg)
+    position: absolute
+    top: 2vh
+
 @media only screen and ( max-width: 995px )
+    .menu
+        display: block
+        cursor: pointer
+        .menu-line
+            cursor: pointer
+
     .nav
         width: 100%
-        height: 6vh
+        height: 7vh
+
+        .navbar
+            display: none
+            height: 90vh
+
+            img
+                display: none
+                width: 8vh
+
+            p
+                display: none
+                font-size: 20px
+
+    input[type=checkbox]:checked ~ .nav .navbar
+        display: flex
+
+    input[type=checkbox]:checked ~ .nav
+        height: 100vh
+
+    input[type=checkbox]:checked ~ .nav .navbar img
+        display: block
+
+    input[type=checkbox]:checked ~ .nav .navbar p
+        display: block
+
+
+
 
 
 

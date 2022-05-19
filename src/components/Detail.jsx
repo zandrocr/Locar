@@ -16,7 +16,7 @@ const Note = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            api.get(`/project/${id}`)
+            api.get(`/car/${id}`)
             .then((response) => {
                 setNote(response.data)
             })

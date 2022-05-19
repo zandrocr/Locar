@@ -2,13 +2,13 @@
 import '../css/newproject.css'
 import '../css/more.css'
 //import api
-import api from '../components/Api';
+import api from './Api';
 import { Link, useParams } from 'react-router-dom';
 //import react
 import React, {useEffect, useState} from "react";
-import Loading from '../components/Loading';
-import Note from '../components/Detail';
-import Button from '../components/Button';
+import Loading from './Loading';
+import Note from './Detail';
+import Button from './Button';
 
 const More = () => {
     const {id} = useParams()
@@ -17,7 +17,7 @@ const More = () => {
 
     useEffect(() => {
         setTimeout(() =>{
-            api.get(`/project/${id}`)
+            api.get(`/car/${id}`)
             .then((response) => {
                 setPost(response.data)
                 setLoad(true)

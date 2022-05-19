@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 //import api
-import api from '../components/Api';
+import api from './Api';
 import { Link, useNavigate } from 'react-router-dom';
 //react use
 import { useState, useEffect } from "react";
