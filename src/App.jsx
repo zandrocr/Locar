@@ -15,7 +15,8 @@ import Garage from "./pages/Garage"
 import More from "./components/More"
 import Edit from "./components/Edit"
 import Fines from "./pages/Fines"
-import FileNew from "./components/FilesNew"
+import FinesNew from "./components/FinesNew"
+import Options from "./components/Options"
 
 const App = () => {
 
@@ -32,9 +33,10 @@ const App = () => {
           <Route path="/more/:id" element={<More />} />
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/fines" element={<Fines />} />
-          <Route path="/finesnew" element={<FileNew />} />
+          <Route path="/finesnew" element={<FinesNew />} />
         </Routes>
         <Navbar />
+        <Options />
     </BrowserRouter>
     </div>
   )

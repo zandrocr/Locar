@@ -11,6 +11,28 @@
       "situation": "disponivel",
       "id": 1,
       "describe": "muiyttyasd"
+    },
+    {
+      "modelo": "qwewqeqw",
+      "cor": "qweqwewq",
+      "ano": "1232",
+      "placa": "121-dad1",
+      "owner": "gabriel",
+      "renavam": "12321312321",
+      "chassi": "21321211111111111",
+      "situation": "disponivel",
+      "id": 2
+    },
+    {
+      "modelo": "dasfdafasfafasf",
+      "cor": "dasfdasdadas",
+      "ano": "1232",
+      "placa": "121-2d11",
+      "owner": "gabriel",
+      "renavam": "11111111111",
+      "chassi": "11111111111111111",
+      "situation": "disponivel",
+      "id": 3
     }
   ],
   "owner": [
@@ -23,15 +45,15 @@
       "telefone": "(13) 45698-5556",
       "telefonetwo": "(12) 66554-8799",
       "id": 1
+    }
+  ],
+  "fine": [
+    {
+      "nome": "ghjkhg",
+      "id": 1
     },
     {
-      "nome": "Alezandro Costa Romão",
-      "nascimento": "32312-02-23",
-      "cpf": "123.213.213-21",
-      "rg": "33.211.111-1",
-      "cnh": "11111111111",
-      "telefone": "(12) 98293-1419",
-      "telefonetwo": "(22) 22222-2222",
+      "nome": "fdhfdghj",
       "id": 2
     }
   ]

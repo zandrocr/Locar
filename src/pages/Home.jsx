@@ -1,12 +1,10 @@
 //import component
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
-import Loading from '../components/Loading';
-import Navbar from '../components/Navbar';
 //import css
 import '../css/home.css'
 //import img
-import plano from '../svg/plano.png'
+import newcar from '../svg/newcar.png'
 
 const Home = () => {
     return (
@@ -25,7 +23,7 @@ const Home = () => {
                             <Button value={'Novo Dono'} />
                         </Link>
                     </div>
-                    <img className='col-12 col-sm-7 col-lg-8 col-xl-5' src={plano} alt="plano" />
+                    <img className='col-12 col-sm-7 col-lg-8 col-xl-5' src={newcar} alt="plano" />
                 </div>
             </div>
         </div>

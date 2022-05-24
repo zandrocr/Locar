@@ -2,10 +2,11 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react'
 //imports img
-import company from '../svg/company.png'
-import project from '../svg/project.png'
+import owner from '../svg/owner.png'
+import car from '../svg/car.png'
+import fine from '../svg/fine.png'
 //import css
-import '../css/navbar.css'
+import Sytle from '../css/navbar.module.css'
 
 function Navbar (){
 //alterar o status do checkbox de checked para unchecked precionando .navbar
@@ -13,6 +14,7 @@ function Navbar (){
     const handleChange = () => {
         setCheck(!check)
     }
+
     function unchecked(){
         if (check == true){
             check = false
@@ -22,26 +24,26 @@ function Navbar (){
     return(
         <nav>
             <input type="checkbox" name="check" id="check" onChange={handleChange} />
-            <label className="menu" htmlFor="check">
-                <div className="menu-line"></div>
-                <div className="menu-line"></div>
-                <div className="menu-line"></div>
+            <label className={Sytle.menu} htmlFor="check">
+                <div className={Sytle.menu_line}></div>
+                <div className={Sytle.menu_line}></div>
+                <div className={Sytle.menu_line}></div>
             </label>
-            <div className="nav" >
+            <div className={Sytle.nav}>
                 <Link to='/' onClick={unchecked}>
-                    <h2>Inova</h2>
+                    <h2> Inova </h2>
                 </Link>
-                <nav className="navbar" >
+                <nav className={Sytle.navbar} >
                     <Link to='/ownerpage' className="d-flex flex-column align-items-center" onClick={unchecked}>
-                        <img className="img" src={company} alt="donos"/>
+                        <img className="img" src={owner} alt="donos"/>
                         <p>Donos</p>
                     </Link>
                     <Link to='/garage' className="d-flex flex-column align-items-center" onClick={unchecked}>
-                        <img className="img" src={project} alt="garagem" />
+                        <img className="img" src={car} alt="garagem" />
                         <p>Garagem</p>
                     </Link>
                     <Link to='/fines' className="d-flex flex-column align-items-center" onClick={unchecked}>
-                        <img className="img" src={project} alt="multas" />
+                        <img className="img" src={fine} alt="multas" />
                         <p>Multas</p>
                     </Link>
                 </nav>
@@ -50,23 +52,3 @@ function Navbar (){
     )
 }
 export default Navbar;
-
-{/**
-<div className="nav d-none d-sm-flex flex-column justify-content-start">
-            <Link to='/'>
-                <h2>Inova</h2>
-            </Link>
-
-            <nav className="navbar d-flex flex-column justify-content-start">
-                <Link to='/ownerpage' className="link">
-                    <img className="img" src={company} alt="donos" />
-                </Link>
-                    <p className="btn comp">Donos</p>
-                <Link to='/garage' className="link1">
-                    <img className="img" src={project} alt="garagem" />
-                </Link>
-                    <p className="btn proj">Garagem</p>
-            </nav>
-        </div>
-
-*/}

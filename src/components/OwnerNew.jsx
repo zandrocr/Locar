@@ -5,12 +5,14 @@ import '../css/newproject.css'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { mask, unMask } from 'remask';
 //import back
 import api from "./Api";
-import { Link, useNavigate } from 'react-router-dom';
+//import components
 import Button from './Button';
-import { mask, unMask } from 'remask';
-import { useState } from 'react';
+
 
 //menssgem de aviso de erro
 const validationService = yup.object().shape({
@@ -29,7 +31,7 @@ const NewOwner = () => {
     const {register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(validationService)
     })
-    const addDono = data => api.post('/owner/', data)
+    const addOwner = data => api.post('/owner/', data)
     .then(() => {
         console.log('envio efetuado')
         navigate('../ownerpage')
@@ -65,9 +67,9 @@ const NewOwner = () => {
             <div className='d-flex col-12 flex-column'>
                 <div className='d-flex flex-column align-items-center justify-content-around'>
                     <div className='col-10'>
-                    <h1 className="title">Nova Dono</h1>
+                    <h1 className="title">Novo Dono</h1>
                     <div className='line col-12'></div>
-                    <form onSubmit={handleSubmit(addDono)} className='form d-flex flex-column col-12 justify-content-around'>
+                    <form onSubmit={handleSubmit(addOwner)} className='form d-flex flex-column col-12 justify-content-around'>
                     <div className='col-12 d-sm-flex justify-content-around'>
                         <div className='col-sm-5'>
                             <div className='d-flex flex-column bd-highlight'>

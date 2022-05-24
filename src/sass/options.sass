@@ -1,0 +1,42 @@
+@import 'import'
+
+.fines_new
+  position: fixed
+  bottom: 3vh
+  right: 3vh
+  img
+    width: 7vh
+    cursor: pointer
+    transition: .2s
+    border-radius: 100%
+    margin-top: 2vh
+    &:hover
+      padding: 1vh
+      border: 3px solid $color
+    &:hover ~ label
+      color: $color2
+
+  label
+    font-size: 10px
+    color: $color
+    transition: .3s
+    &:hover
+      color: $color2
+
+  input[type=checkbox]
+    display: none
+
+  .up, a
+    width: 0
+
+  input[type=checkbox]:checked ~ nav .up
+    width: 7vh
+
+  input[type=checkbox]:checked ~ nav a
+    width: 7vh
+
+
+@media only screen and (max-width:425px)
+  .fines_new
+    label
+      display: none

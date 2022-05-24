@@ -30,7 +30,7 @@ const NewCar = () => {
     const { register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(validationPost)
     })
-    const addPost = data => api.post('/project/', data)
+    const addPost = data => api.post('/car/', data)
     .then(() => {
         console.log('envio efetuado')
         navigate('../garage')
@@ -47,7 +47,7 @@ const NewCar = () => {
             setOwner(response.data)
             })
             .catch(() => {
-            console.log('fail')
+            console.log(errors)
             })
         })
     }, [])
