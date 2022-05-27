@@ -34,6 +34,7 @@ const App = () => {
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/fines" element={<Fines />} />
           <Route path="/finesnew" element={<FinesNew />} />
+          <Route path="/finesnew" element={<FinesNew />} />
         </Routes>
         <Navbar />
         <Options />

@@ -1,18 +1,6 @@
 {
   "car": [
     {
-      "modelo": "moza",
-      "cor": "branca",
-      "ano": "2321",
-      "placa": "123-2132",
-      "owner": "gabriel",
-      "renavam": "12321321321",
-      "chassi": "32111111111111111",
-      "situation": "disponivel",
-      "id": 1,
-      "describe": "muiyttyasd"
-    },
-    {
       "modelo": "qwewqeqw",
       "cor": "qweqwewq",
       "ano": "1232",
@@ -45,16 +33,48 @@
       "telefone": "(13) 45698-5556",
       "telefonetwo": "(12) 66554-8799",
       "id": 1
+    },
+    {
+      "nome": "hunji",
+      "nascimento": "1212-02-11",
+      "cpf": "123.121.111-11",
+      "rg": "11.111.111-1",
+      "cnh": "11111111111",
+      "telefone": "(11) 11111-1111",
+      "telefonetwo": "(11) 11111-1111",
+      "id": 2
     }
   ],
   "fine": [
     {
-      "nome": "ghjkhg",
+      "placa": "121-dad1",
+      "infrator": "123213",
+      "ait": "21321321",
+      "codInfra": "3 2 1 3 2 1 3",
+      "dataInfra": "21123-03-12",
+      "dataIndic": "21321-03-12",
+      "obs": "",
+      "situation": "321321321321",
+      "value": "12.321,32",
+      "local": "123213",
+      "indic": "0213-03-12",
+      "pay": "Não Pago",
       "id": 1
     },
     {
-      "nome": "fdhfdghj",
-      "id": 2
+      "placa": "121-dad1",
+      "infrator": "123213",
+      "ait": "21321321",
+      "codInfra": "3 2 1 3 2 1 3",
+      "dataInfra": "21123-03-12",
+      "dataIndic": "21321-03-12",
+      "obs": "",
+      "situation": "321321321321",
+      "value": "12.321,32",
+      "local": "123213",
+      "indic": "0213-03-12",
+      "pay": "Não Pago",
+      "id": 1
     }
   ]
 }

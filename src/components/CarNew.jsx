@@ -59,7 +59,7 @@ const NewCar = () => {
     }
     const [ placa, setplaca ] = useState([])
     const onPlaca = ev => {
-        setplaca(mask(unMask(ev.target.value), ['SSS-SSSS']))
+        setplaca(mask(unMask(ev.target.value), ['999-SSSS']))
     }
     const [ renavam, setrenavam ] = useState([])
     const onRenavam = ev => {
