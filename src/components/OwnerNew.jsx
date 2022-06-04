@@ -72,7 +72,7 @@ const NewOwner = () => {
                     <form onSubmit={handleSubmit(addOwner)} className='form d-flex flex-column col-12 justify-content-around'>
                     <div className='col-12 d-sm-flex justify-content-around'>
                         <div className='col-sm-5'>
-                            <div className='d-flex flex-column bd-highlight'>
+                            <div className='d-flex flex-column'>
                                 <label className="title">Nome</label>
                                 <input
                                 className='input'

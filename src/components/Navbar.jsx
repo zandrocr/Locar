@@ -14,13 +14,11 @@ function Navbar (){
     const handleChange = () => {
         setCheck(!check)
     }
-
     function unchecked(){
-        if (check == true){
-            check = false
+        if (clik == true) {
+            clik = false
         }
     }
-
     return(
         <nav>
             <input type="checkbox" name="check" id="check" onChange={handleChange} />

@@ -44,12 +44,12 @@ const FinesNew = () => {
       console.log(errors)
   }, [])
 
-  const [ car ,setCar] = useState([])
+  const [ fine ,setFine] = useState([])
   useEffect(() => {
       setTimeout(() => {
         api.get('/car/')
           .then((response) => {
-          setCar(response.data)
+          setFine(response.data)
         })
         .catch(() => {
           console.log(errors)
@@ -58,18 +58,31 @@ const FinesNew = () => {
   }, [])
 
 //mascaras dos inputs (erro ao fazer a mascara condicionada)
-  const [ ait, setAit ] = useState([])
+  const [ ait, setAit ] = useState()
   const onAit = ev => {
     setAit(mask(unMask(ev.target.value), ['SSSSSSSSSSSSSSSSSSSS']))
   }
-  const [ codInfra, setCodInfra ] = useState([])
+  const [ codInfra, setCodInfra ] = useState()
   const onCodInfra = ev => {
-    setCodInfra(mask(unMask(ev.target.value), ['9 9 9 9 9 9 9 9 9 9']))
+    setCodInfra(mask(unMask(ev.target.value), ['9999999999']))
   }
-  const [ value, setValue ] = useState([])
+  const [ value, setValue ] = useState()
   const onValue = ev => {
     setValue(mask(unMask(ev.target.value), ['9,99', '99,99', '999,99', '9.999,99', '99.999,99']))
   }
+  const [ date, setDate ] = useState()
+  const onDate = ev => {
+    setDate(mask(unMask(ev.target.value), ['99/99/9999']))
+  }
+  const [ dateInd, setDateInd ] = useState()
+  const onDateInd = ev => {
+    setDateInd(mask(unMask(ev.target.value), ['99/99/9999']))
+  }
+  const [ dateCad, setDateCad ] = useState()
+  const onDateCad = ev => {
+    setDateCad(mask(unMask(ev.target.value), ['99/99/9999']))
+  }
+
 
   return (
     <div className='project d-flex col-12 justify-content-center'>
@@ -79,14 +92,14 @@ const FinesNew = () => {
           <div className='line col-12'></div>
           <form onSubmit={handleSubmit(addFine)} className='form d-flex flex-column col-12 justify-content-around'>
             <div className='d-sm-flex justify-content-around'>
-              <div className='d-flex justify-content-lg-around col-12'>
-                <div class="col-5">
-                  <div className='d-flex flex-column' >
+              <div className='col-12 d-sm-flex justify-content-around'>
+                <div class="col-sm-5">
+                  <div className='d-flex flex-column bd-highlight' >
                     <label className='title'>Placa</label>
                     <select className='col-12 input' {...register('placa')}>
                       <option disabled selected value="">Selecione o tipo</option>
-                      {car.map((car) => (
-                        <option key={car.id}>{car.placa}</option>
+                      {fine.map((fine) => (
+                        <option key={fine.id}>{fine.placa}</option>
                       ))}
                     </select>
                     <p>{errors.placa?.message}</p>
@@ -95,7 +108,7 @@ const FinesNew = () => {
                     <label className='title'>Infrator</label>
                     <input
                     className='input'
-                    autocomplete="off"
+                    autoComplete='off'
                     name={'infrator'}
                     {...register('infrator')}
                     placeholder={'Digite a infração'}/>
@@ -105,7 +118,7 @@ const FinesNew = () => {
                     <label className='title'>AIT</label>
                     <input
                     className='input'
-                    autocomplete="off"
+                    autoComplete='off'
                     name={'ait'}
                     {...register('ait')}
                     placeholder={'Digite o AIT'}
@@ -117,7 +130,7 @@ const FinesNew = () => {
                     <label className='title'>Cod. Infração</label>
                     <input
                     className='input'
-                    autocomplete="off"
+                    autoComplete='off'
                     name={'codInfra'}
                     {...register('codInfra')}
                     placeholder={'Digite o código da infração'}
@@ -128,35 +141,37 @@ const FinesNew = () => {
                   <div className='d-flex flex-column bd-highlight'>
                     <label className='title'>Data da Infração</label>
                     <input
-                    type='date'
                     className='input'
-                    autocomplete="off"
+                    autoComplete="off"
                     name={'dataInfra'}
                     {...register('dataInfra')}
                     placeholder={'Digite o modelo do carro'}
+                    onChange={onDate}
+                    value={date}
                     />
                     <p>{errors.dataInfra?.message}</p>
                   </div>
                   <div className='d-flex flex-column bd-highlight'>
                     <label className='title'>Data Para Indicação</label>
                     <input
-                    type='date'
                     className='input'
-                    autocomplete="off"
+                    autoComplete='off'
                     name={'dataIndic'}
                     {...register('dataIndic')}
                     placeholder={'Digite a data de indicação'}
+                    onChange={onDateInd}
+                    value={dateInd}
                     />
                     <p>{errors.dataIndic?.message}</p>
                   </div>
               </div>
 
-              <div class="col-5">
+              <div class="col-sm-5">
                 <div className='d-flex flex-column bd-highlight'>
                   <label className='title'>Observação</label>
                   <input
                   className='input'
-                  autocomplete="off"
+                  autoComplete='off'
                   name={'obs'}
                   {...register('obs')}
                   placeholder={'Obs'}
@@ -167,7 +182,7 @@ const FinesNew = () => {
                   <label className='title'>Situação</label>
                   <input
                   className='input'
-                  autocomplete="off"
+                  autoComplete='off'
                   name={'situation'}
                   {...register('situation')}
                   placeholder={'Digite o modelo do carro'}
@@ -178,7 +193,7 @@ const FinesNew = () => {
                   <label className='title'>Valor</label>
                   <input
                   className='input'
-                  autocomplete="off"
+                  autoComplete='off'
                   name={'value'}
                   {...register('value')}
                   placeholder={'Digite o valor da multa'}
@@ -191,20 +206,22 @@ const FinesNew = () => {
                   <label className='title'>Local</label>
                   <input
                   className='input'
-                  autocomplete="off"
+                  autoComplete='off'
                   name={'local'}
                   {...register('local')}
-                  placeholder={'Digite o modelo do carro'}/>
+                  placeholder={'Local do ocorrido'}/>
                   <p>{errors.local?.message}</p>
                 </div>
                 <div className='d-flex flex-column bd-highlight'>
                   <label className='title'>Indicada</label>
                   <input
-                  type='date'
                   className='input'
-                  autocomplete="off"
+                  autoComplete='off'
                   name={'indic'}
-                  {...register('indic')}/>
+                  {...register('indic')}
+                  onChange={onDateCad}
+                  value={dateCad}
+                  placeholder={'Digite a data da infração'} />
                   <p>{errors.indic?.message}</p>
                 </div>
                 <div className='d-flex flex-column' >

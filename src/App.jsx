@@ -10,12 +10,15 @@ import Home from "./pages/Home"
 import NewDono from "./components/OwnerNew"
 import OwnerPage from "./pages/OwnerPage"
 import EditOwner from "./components/OwnerEdit"
+import OwnerMore from "./components/OwnerMore"
 import CarNew from "./components/CarNew"
 import Garage from "./pages/Garage"
 import More from "./components/More"
 import Edit from "./components/Edit"
 import Fines from "./pages/Fines"
 import FinesNew from "./components/FinesNew"
+import FinesEdit from "./components/FinesEdit"
+import FinesMore from "./components/FinesMore"
 import Options from "./components/Options"
 
 const App = () => {
@@ -27,6 +30,7 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route path='/newowner' element={<NewDono />} />
           <Route path="/ownerpage" element={<OwnerPage />} />
+          <Route path="/ownermore/:id" element={<OwnerMore />} />
           <Route path='/editowner/:id' element={<EditOwner />} />
           <Route path="/newcar" element={<CarNew />} />
           <Route path="/garage" element={<Garage />} />
@@ -34,7 +38,8 @@ const App = () => {
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/fines" element={<Fines />} />
           <Route path="/finesnew" element={<FinesNew />} />
-          <Route path="/finesnew" element={<FinesNew />} />
+          <Route path="/finesedit/:id" element={<FinesEdit />} />
+          <Route path="/finesmore/:id" element={<FinesMore />} />
         </Routes>
         <Navbar />
         <Options />

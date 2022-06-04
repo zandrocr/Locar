@@ -16,7 +16,6 @@ const OwnerPage = () => {
                 <div className="line"></div>
                 <Owner />
             </div>
-
         </div>
      );
 

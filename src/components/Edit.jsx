@@ -21,13 +21,15 @@ const validationPost = yup.object().shape({
     renavam: yup.string().required('O renavam é obrigatório').min(11, 'Digite corretamente'),
     chassi: yup.string().required('O chassi é obrigatório').min(17, 'Digite corretamente'),
     situation: yup.string().required('Selecione uma situação'),
-    detalhes: yup.string().max(500, 'Maximo de 500 caracteres.')
+    describe: yup.string().max(500, 'Maximo de 500 caracteres.')
 })
 
 const NewCar = () => {
 
-    //list owner
     const [owner ,setOwner] = useState([])
+    const {id} = useParams()
+    let navigate = useNavigate()
+    //list owner
     useEffect(() => {
         api.get('/owner')
         .then((response) => {
@@ -37,9 +39,7 @@ const NewCar = () => {
         console.log('fail')
         })
     }, [])
-
-    const {id} = useParams()
-    let navigate = useNavigate()
+    //comands yup
     const { register, handleSubmit, formState: {errors}, reset} = useForm({
         resolver: yupResolver(validationPost)
     })
@@ -52,6 +52,7 @@ const NewCar = () => {
     .catch(() => {
         console.log(errors)
     })
+
     useEffect(() => {
         api.get(`/car/${id}`)
         .then((response) => {
@@ -66,7 +67,7 @@ const NewCar = () => {
     }
     const [ placa, setplaca ] = useState()
     const onPlaca = ev => {
-        setplaca(mask(unMask(ev.target.value), ['SSS-SSSS']))
+        setplaca(mask(unMask(ev.target.value), ['999-SSSS']))
     }
     const [ renavam, setrenavam ] = useState()
     const onRenavam = ev => {
@@ -80,7 +81,7 @@ const NewCar = () => {
     return (
         <div className="project d-flex justify-content-center">
             <div className="col-10">
-                <h1 className='title'>Novo Carro</h1>
+                <h1 className='title'>Editar Carro</h1>
                     <div className='d-flex justify-content-center'>
                         <div className='line col-12'></div>
                     </div>

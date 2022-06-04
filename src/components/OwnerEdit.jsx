@@ -34,7 +34,7 @@ const EditOwner = () => {
     const editOwner = data => Api.put(`/owner/${id}`, data)
     .then(() => {
         console.log('envio efetuado')
-        navigate('../ownerpage/')
+        navigate(`../ownermore/${id}`)
     })
     .catch(() => {
         console.log(errors)

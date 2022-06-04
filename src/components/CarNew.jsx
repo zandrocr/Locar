@@ -21,7 +21,7 @@ const validationPost = yup.object().shape({
     renavam: yup.string().required('O renavam é obrigatório').min(11, 'Digite corretamente'),
     chassi: yup.string().required('O chassi é obrigatório').min(17, 'Digite corretamente'),
     situation: yup.string().required('Selecione uma situação'),
-    detalhes: yup.string().max(500, 'Maximo de 500 caracteres.')
+    describe: yup.string().max(500, 'Maximo de 500 caracteres.')
 })
 
 const NewCar = () => {
@@ -135,7 +135,7 @@ const NewCar = () => {
                             <div className='d-flex flex-column' >
                                 <label className='title'>Dono</label>
                                 <select className='col-12 input' {...register('owner')}>
-                                    <option disabled selected value="">Selecione o tipo</option>
+                                    <option disabled selected value="">Selecione o dono</option>
                                     {owner.map((owner) => (
                                         <option >{owner.nome}</option>
                                     ))}
@@ -173,7 +173,7 @@ const NewCar = () => {
                             <div>
                                 <label>Situação</label>
                                 <select className='col-12 input' name='situation' {...register("situation")}>
-                                    <option disabled selected value="">Selecione o tipo</option>
+                                    <option disabled selected value="">Selecione a disponibilidade</option>
                                     <option value="disponivel">Disponível</option>
                                     <option value="indisponivel">Indisponivél</option>
                                 </select>
@@ -183,8 +183,8 @@ const NewCar = () => {
                     </div>
                     <div className='d-flex flex-column align-items-center'>
                         <label>Detalhes</label>
-                        <textarea className='input col-11' name='detalhes' cols="10" rows="50"></textarea>
-                        <p>{errors.detalhes?.message}</p>
+                        <textarea className='input col-11' name='describe' cols="10" rows="50"{...register("describe")}></textarea>
+                        <p>{errors.describe?.message}</p>
                     </div>
 
                     <div className='d-flex justify-content-around'>

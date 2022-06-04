@@ -11,8 +11,8 @@ const Home = () => {
         <div className="home col-12 d-flex justify-content-center">
             <div className='col-10'>
                 <div className='d-flex col-12 flex-column align-items-center'>
-                    <h1>Cadastre um novo carro</h1>
-                    <p>Adicione agora mesmo mais um carro a frota</p>
+                    <h1>Novo cadastro</h1>
+                    <p>Adicione agora mesmo mais um carro a frota!</p>
                 </div>
                 <div className='projeto d-flex flex-column align-items-center'>
                     <div className='d-flex col-10 justify-content-between justify-content-sm-around'>
@@ -23,7 +23,7 @@ const Home = () => {
                             <Button value={'Novo Dono'} />
                         </Link>
                     </div>
-                    <img className='col-12 col-sm-7 col-lg-8 col-xl-5' src={newcar} alt="plano" />
+                    <img className='col-12 col-sm-6 col-lg-5 col-xl-4' src={newcar} alt="plano" />
                 </div>
             </div>
         </div>

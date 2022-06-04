@@ -17,13 +17,11 @@ const Options = () => {
   const handleChange = () => {
       setCheck(!check)
   }
-
   function unchecked(){
-      if (check == true){
-          check = false
-      }
-  }
-
+    if (clik == true) {
+        clik = false
+    }
+}
   return (
     <div className={'fines_new'}>
       <div>

@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 //component
 import api from '../components/Api'
+
 //react use
 import React, {useState, useEffect} from "react";
 //import css
@@ -31,54 +32,64 @@ const Project = () => {
         api.delete(`/car/${id}`)
         setPost(post.filter(posts => posts.id !== id))
     }
-
     return (
-    <div className="d-flex col-12 justify-content-center">
+    <div className="d-flex col-12 flex-column align-items-center">
         <div className="col-10">
             <div className="d-flex flex-column">
                 <h1 className="title">Garagem</h1>
-                <Link to='/newcar'>
-                    <button className="btn">Novo carro</button>
-                </Link>
+                <div>
+                    <Link to='/newcar'>
+                        <button className="btn">Novo carro</button>
+                    </Link>
+                </div>
+
             </div>
             <div className="line"></div>
-            <div className="post d-flex flex-column align-items-center">
-                {!load && <Loading />}
-                {post.length > 0 &&
-                    post.map((post, key) => {
-                        return(
-                            <div key={key} className="card col-11">
-                                <h2 className="title">{post.modelo}</h2>
-                                <div className="line"></div>
-                                <div className="d-sm-flex justify-content-around">
-                                    <div className="col-sm-5">
-                                        <h4 className="title">Cor:</h4>
-                                        <p className="input">{post.cor}</p>
-                                        <h4 className="title">Ano:</h4>
-                                        <p className="input">{post.ano}</p>
-                                        <h4 className="title">Placa:</h4>
-                                        <p className="input">{post.placa}</p>
-                                    </div>
-                                    <div className="col-sm-5">
-                                        <h4 className="title">Dono:</h4>
-                                        <p className="input">{post.owner}</p>
-                                        <h4 className="title">Situacao:</h4>
-                                        <p className="input">{post.situation}</p>
-                                    </div>
+        <div className="post d-flex flex-column flex-sm-row flex-sm-wrap">
+            {!load && <Loading />}
+            {post.map((post, key) => {
+                return(
+                <div className="d-felx col-12 col-lg-6 justify-content-around" key={key}>
+                    <div className="card">
+                        <h3 className="title">{post.modelo}</h3>
+                        <div className="line"></div>
+                        <div className="col-12 d-sm-flex justify-content-around">
+                            <div className="col-sm-5">
+                                <div>
+                                    <h5 className="title"> Cor </h5>
+                                    <div className="input">{post.cor}</div>
                                 </div>
-                                <div className="d-flex align-items-center flex-sm-row d-sm-flex justify-content-around">
-                                    <Link to={{pathname: `/edit/${post.id}`}}>
-                                        <Button value={'Editar'} />
-                                    </Link>
-                                    <Link to={{pathname: `/more/${post.id}`}}>
-                                        <Button value={'Mais'} />
-                                    </Link>
-                                    <Button value={'Apagar'} onClick={() => deletePost(post.id)}/>
+                                <div>
+                                    <h5 className="title"> Placa </h5>
+                                    <div className="input">{post.placa}</div>
                                 </div>
                             </div>
-                        )
-                    })
-                }
+                            {/**separação do conteudo */}
+                            <div className="col-sm-5">
+                                <div>
+                                    <h5 className="title"> Situação </h5>
+                                    <div className="input">{post.situation}</div>
+                                </div>
+                                <div>
+                                    <h5 className="title"> Dono </h5>
+                                    <div className="input">{post.owner}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="line"></div>
+                        <div className="d-flex align-items-center flex-sm-row d-sm-flex justify-content-around">
+                            <Link to={{pathname: `/edit/${post.id}`}}>
+                                <Button value={'Editar'} />
+                            </Link>
+                            <Link to={{pathname: `/more/${post.id}`}}>
+                                <Button value={'Mais'} />
+                            </Link>
+                            <Button value={'Apagar'} onClick={() => deletePost(post.id)}/>
+                        </div>
+                    </div>
+                </div>
+            )
+            })}
             </div>
         </div>
     </div> );
