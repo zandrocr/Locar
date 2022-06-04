@@ -44,6 +44,10 @@ function Navbar (){
                         <img className="img" src={fine} alt="multas" />
                         <p>Multas</p>
                     </Link>
+                    <Link to='/driver' className="d-flex flex-column align-items-center" onClick={unchecked}>
+                        <img className="img" src={fine} alt="Aluguel" />
+                        <p>Aluguel</p>
+                    </Link>
                 </nav>
             </div>
         </nav>

@@ -61,6 +61,10 @@ const NewOwner = () => {
     const onTelw = ev => {
         setTelw(mask(unMask(ev.target.value), ['(99) 99999-9999']))
     }
+    const [ nascimento, setNascimento ] = useState()
+    const onNascimento = ev => {
+      setNascimento(mask(unMask(ev.target.value), ['99/99/9999']))
+    }
 
     return (
         <div className='project d-flex justify-content-around'>
@@ -82,17 +86,18 @@ const NewOwner = () => {
                                 placeholder={'Digite o nome'}/>
                                 <p>{errors.nome?.message}</p>
                             </div>
-                            <div className='d-flex flex-column'>
-                                <label className="title">Nascimento</label>
+                            <div className='d-flex flex-column bd-highlight'>
+                                <label className='title'>Nascimento</label>
                                 <input
-                                type={'date'}
                                 className='input'
-                                autocomplete="off"
+                                autoComplete='off'
                                 name={'nascimento'}
                                 {...register('nascimento')}
-                                placeholder={'Digite o nascimento'}
+                                placeholder={'Digite a data de indicação'}
+                                onChange={onNascimento}
+                                value={nascimento}
                                 />
-                                <p>{errors.nascimento?.message}</p>
+                                <p>{errors.dataIndic?.message}</p>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label className="title">CPF</label>

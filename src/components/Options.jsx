@@ -32,6 +32,15 @@ const Options = () => {
           onChange={handleChange} />
         <nav className='d-flex flex-column justify-content-center align-items-center'>
           <Link
+            to='/drivernew'
+            className={'d-flex flex-column align-items-center'}
+            onClick={unchecked}>
+              <img
+                src={newFine}
+                alt="newFine"
+                className='up'/>
+          </Link>
+          <Link
             to='/finesnew'
             className={'d-flex flex-column align-items-center'}
             onClick={unchecked}>

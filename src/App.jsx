@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 //import pages
 import Home from "./pages/Home"
+import Options from "./components/Options"
 import NewDono from "./components/OwnerNew"
 import OwnerPage from "./pages/OwnerPage"
 import EditOwner from "./components/OwnerEdit"
@@ -19,7 +20,8 @@ import Fines from "./pages/Fines"
 import FinesNew from "./components/FinesNew"
 import FinesEdit from "./components/FinesEdit"
 import FinesMore from "./components/FinesMore"
-import Options from "./components/Options"
+import Driver from "./pages/Driver"
+import DriverNew from "./components/DriverNew"
 
 const App = () => {
 
@@ -40,6 +42,8 @@ const App = () => {
           <Route path="/finesnew" element={<FinesNew />} />
           <Route path="/finesedit/:id" element={<FinesEdit />} />
           <Route path="/finesmore/:id" element={<FinesMore />} />
+          <Route path="/driver" element={<Driver />} />
+          <Route path="/drivernew" element={<DriverNew />} />
         </Routes>
         <Navbar />
         <Options />
