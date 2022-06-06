@@ -30,14 +30,27 @@ const validationService = yup.object().shape({
 })
 
 const FinesEdit = () => {
-
+//variables
   const [ fine ,setFine] = useState([])
   const {id} = useParams()
-
   let navigate = useNavigate()
+//comands yup
   const {register, handleSubmit, formState: {errors}, reset} = useForm({
       resolver: yupResolver(validationService)
   })
+//list car
+  useEffect(() => {
+      setTimeout(() => {
+        api.get('/car/')
+          .then((response) => {
+            setFine(response.data)
+        })
+        .catch(() => {
+              console.log(errors)
+        })
+      })
+  }, [])
+//comand edit put
   const editFine = (data) => api.put(`/fine/${id}`, data)
   .then(() => {
       console.log('envio efetuado')
@@ -46,16 +59,7 @@ const FinesEdit = () => {
   .catch(() => {
       console.log(errors)
   })
-  //plate list
-  useEffect(() => {
-      setTimeout(() => {
-        api.get('/car/')
-          .then((response) => {
-          setFine(response.data)
-        })
-      })
-  }, [])
-
+//get the fine
   useEffect(() => {
     api.get(`/fine/${id}`)
     .then((response) => {

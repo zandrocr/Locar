@@ -25,25 +25,25 @@ const validationPost = yup.object().shape({
 })
 
 const NewCar = () => {
-
+//variables
     const [owner ,setOwner] = useState([])
     const {id} = useParams()
     let navigate = useNavigate()
-    //list owner
-    useEffect(() => {
-        api.get('/owner')
-        .then((response) => {
-        setOwner(response.data)
-        })
-        .catch(() => {
-        console.log('fail')
-        })
-    }, [])
-    //comands yup
+//comands yup
     const { register, handleSubmit, formState: {errors}, reset} = useForm({
         resolver: yupResolver(validationPost)
     })
-    //comand edit
+//list owner
+    useEffect(() => {
+        api.get('/owner')
+        .then((response) => {
+            setOwner(response.data)
+        })
+        .catch(() => {
+            console.log(errors)
+        })
+    }, [])
+//comand edit put
     const editPost = (data) => api.put(`/car/${id}`, data)
     .then(() => {
         console.log('envio efetuado')
@@ -52,7 +52,7 @@ const NewCar = () => {
     .catch(() => {
         console.log(errors)
     })
-
+//get the car
     useEffect(() => {
         api.get(`/car/${id}`)
         .then((response) => {

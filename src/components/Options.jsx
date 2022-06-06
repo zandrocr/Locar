@@ -9,19 +9,17 @@ import optionCar from '../svg/optionCar.png'
 import newOwner from '../svg/owner.png'
 import newCar from '../svg/car.png'
 import newFine from '../svg/fine.png'
+import rent from '../svg/rent.png'
 
 const Options = () => {
-
 //alterar o status do checkbox de checked para unchecked precionando .navbar
-  const [check, setCheck] = useState(false)
-  const handleChange = () => {
-      setCheck(!check)
-  }
-  function unchecked(){
-    if (clik == true) {
-        clik = false
+  	let [modal, setModal] = useState()
+//dunction close menu
+    function onClick(){
+        e.preventDefault()
+        {modal === true ? modal = false : modal }
     }
-}
+
   return (
     <div className={'fines_new'}>
       <div>
@@ -29,30 +27,30 @@ const Options = () => {
           type="checkbox"
           name="optionCar"
           id="optionCar"
-          onChange={handleChange} />
+          onChange={setModal} />
         <nav className='d-flex flex-column justify-content-center align-items-center'>
           <Link
-            to='/drivernew'
+            to='/finesnew'
             className={'d-flex flex-column align-items-center'}
-            onClick={unchecked}>
+            onClick={onClick}>
               <img
                 src={newFine}
                 alt="newFine"
                 className='up'/>
           </Link>
           <Link
-            to='/finesnew'
+            to='/rentnew'
             className={'d-flex flex-column align-items-center'}
-            onClick={unchecked}>
+            onClick={onClick}>
               <img
-                src={newFine}
+                src={rent}
                 alt="newFine"
                 className='up'/>
           </Link>
           <Link
             to='/newcar'
             className={'d-flex flex-column align-items-center'}
-            onClick={unchecked}>
+            onClick={onClick}>
               <img
                 src={newCar}
                 alt="newCar"
@@ -61,7 +59,7 @@ const Options = () => {
           <Link
             to='/newowner'
             className={'d-flex flex-column align-items-center'}
-            onClick={unchecked}>
+            onClick={onClick}>
               <img
                 src={newOwner}
                 alt="newOwner"

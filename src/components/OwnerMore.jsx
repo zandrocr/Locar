@@ -25,6 +25,11 @@ const OwnerMore = () => {
         }, 600)
     }, [])
 
+    function deleteOwner(id){
+        api.delete(`/owner/${id}`)
+        setOwner(owner.filter(owner => owner.id !== id))
+      }
+
     return (
         <div className="project d-flex justify-content-center">
             <div className="col-10">
@@ -61,6 +66,9 @@ const OwnerMore = () => {
                                 </Link>
                                 <Link to={{pathname: `/editowner/${owner.id}`}}>
                                     <Button value={'Editar'} />
+                                </Link>
+                                <Link to='/ownerpage'>
+                                    <Button value={'Apagar'} onClick={() => deleteOwner(owner.id)}/>
                                 </Link>
                             </div>
                         </div>

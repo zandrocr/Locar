@@ -25,6 +25,11 @@ const More = () => {
         }, 600)
     }, [])
 
+    function deletePost(id){
+        api.delete(`/car/${id}`)
+        setPost(post.filter(posts => posts.id !== id))
+    }
+
     return (
         <div className="project d-flex justify-content-center">
             <div className="col-10">
@@ -64,6 +69,9 @@ const More = () => {
                                 </Link>
                                 <Link to={{pathname: `/edit/${post.id}`}}>
                                     <Button value={'Editar'} />
+                                </Link>
+                                <Link to='/garage'>
+                                    <Button value={'Apagar'} onClick={() => deletePost(post.id)}/>
                                 </Link>
                             </div>
                         </div>

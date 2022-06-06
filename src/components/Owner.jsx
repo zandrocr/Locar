@@ -8,9 +8,10 @@ import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
 
 const Owner = () => {
-
+//compenets
   const [load, setLoad] = useState(false)
   const [owner ,setOwner] = useState([])
+//rots
   useEffect(() => {
     setTimeout(() => {
       api.get('/owner')
@@ -23,7 +24,7 @@ const Owner = () => {
       })
     }, 600)
   }, [])
-
+//delet a owner
   function deleteOwner(id){
     api.delete(`/owner/${id}`)
     setOwner(owner.filter(owner => owner.id !== id))
@@ -57,7 +58,9 @@ const Owner = () => {
                             <Link to={{pathname: `/ownermore/${owner.id}`}}>
                                 <Button value={'Mais'}/>
                             </Link>
-                            <Button value={'Apagar'} onClick={() => deleteOwner(owner.id)}/>
+                            <Link to='/ownerpage' >
+                              <Button value={'Apagar'} onClick={() => deleteOwner(owner.id)}/>
+                            </Link>
                         </div>
                     </div>
                 </div>

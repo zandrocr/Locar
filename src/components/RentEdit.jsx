@@ -5,7 +5,7 @@ import '../css/newproject.css'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { mask, unMask } from 'remask';
 //import back
 import api from "./Api";
@@ -22,25 +22,22 @@ const validationService = yup.object().shape({
     rg: yup.string().required('O rg é obrigatório').min(12, 'Digite corretamente'),
     cnh: yup.string().required('A cnh é obrigatória').min(11, 'Digite corretamente'),
     telefone: yup.string().required('O telefone é obrigatório').min(15, 'Digite corretamente'),
-    telefonetwo: yup.string().min(15, 'Digite corretamente')
+    telefonetwo: yup.string().min(15, 'Digite corretamente'),
+    km: yup.string().required('O KM é obrigatório'),
+    value: yup.string().required('O valor é obrigatório'),
+    placa: yup.string().required('A placa é obrigatório')
 })
 
-const DriverNew = () => {
-
+const RentEdit = () => {
+//variables
+    const [ driver ,setDriver] = useState([])
+    const {id} = useParams()
     let navigate = useNavigate()
-    const {register, handleSubmit, formState: {errors}} = useForm({
+//comands yup
+    const {register, handleSubmit, formState: {errors}, reset} = useForm({
         resolver: yupResolver(validationService)
     })
-    const addOwner = data => api.post('/driver/', data)
-    .then(() => {
-        console.log('envio efetuado')
-        navigate('../ownerpage')
-    })
-    .catch(() => {
-        console.log(errors)
-    }, [])
-
-    const [ driver ,setDriver] = useState([])
+//list car
     useEffect(() => {
         setTimeout(() => {
           api.get('/car/')
@@ -52,25 +49,41 @@ const DriverNew = () => {
           })
         })
     }, [])
+//comand edit put
+    const editRent = (data) => api.put(`/rent/${id}`, data)
+    .then(() => {
+        console.log('envio efetuado')
+        navigate('../rent')
+    })
+    .catch(() => {
+        console.log(errors)
+    }, [])
+//get the rent
+    useEffect(() => {
+        api.get(`/rent/${id}`)
+        .then((response) => {
+            reset(response.data)
+        })
+    }, [])
 
 //mascaras dos inputs (erro ao fazer a mascara condicionada)
-    const [ cpf, setCpf ] = useState([])
+    const [ cpf, setCpf ] = useState()
     const onCpf = ev => {
         setCpf(mask(unMask(ev.target.value), ['999.999.999-99']))
     }
-    const [ rg, setRg ] = useState([])
+    const [ rg, setRg ] = useState()
     const onRg = ev => {
         setRg(mask(unMask(ev.target.value), ['99.999.999-S']))
     }
-    const [ cnh, setCnh ] = useState([])
+    const [ cnh, setCnh ] = useState()
     const onCnh = ev => {
         setCnh(mask(unMask(ev.target.value), ['99999999999']))
     }
-    const [ tel, setTel ] = useState([])
+    const [ tel, setTel ] = useState()
     const onTel = ev => {
         setTel(mask(unMask(ev.target.value), ['(99) 99999-9999']))
     }
-    const [ telw, setTelw ] = useState([])
+    const [ telw, setTelw ] = useState()
     const onTelw = ev => {
         setTelw(mask(unMask(ev.target.value), ['(99) 99999-9999']))
     }
@@ -92,16 +105,16 @@ const DriverNew = () => {
             <div className='d-flex col-12 flex-column'>
                 <div className='d-flex flex-column align-items-center justify-content-around'>
                     <div className='col-10'>
-                    <h1 className="title">Novo Aluguel</h1>
+                    <h1 className="title">Editar Aluguel</h1>
                     <div className='line col-12'></div>
-                    <form onSubmit={handleSubmit(addOwner)} className='form d-flex flex-column col-12 justify-content-around'>
+                    <form onSubmit={handleSubmit(editRent)} className='form d-flex flex-column col-12 justify-content-around'>
                     <div className='col-12 d-sm-flex justify-content-around'>
                         <div className='col-sm-5'>
                             <div className='d-flex flex-column'>
                                 <label className="title">Nome</label>
                                 <input
                                 className='input'
-                                autocomplete="off"
+                                autoComplete='off'
                                 name={'nome'}
                                 {...register('nome')}
                                 placeholder={'Digite o nome'}/>
@@ -114,20 +127,20 @@ const DriverNew = () => {
                                 autoComplete='off'
                                 name={'nascimento'}
                                 {...register('nascimento')}
-                                placeholder={'Digite a data de indicação'}
+                                placeHolder={'Digite a data de indicação'}
                                 onChange={onNascimento}
                                 value={nascimento}
                                 />
-                                <p>{errors.dataIndic?.message}</p>
+                                <p>{errors.nascimento?.message}</p>
                             </div>
                             <div className='d-flex flex-column'>
                                 <label className="title">CPF</label>
                                 <input
                                 className='input'
-                                autocomplete="off"
+                                autoComplete="off"
                                 name={'cpf'}
                                 {...register('cpf')}
-                                placeholder={'Digite o cpf'}
+                                placeHolder={'Digite o cpf'}
                                 onChange={onCpf}
                                 value={cpf}
                                 />
@@ -137,7 +150,7 @@ const DriverNew = () => {
                                 <label className="title">RG</label>
                                 <input
                                 className='input'
-                                autocomplete="off"
+                                autoComplete="off"
                                 name={'rg'}
                                 {...register('rg')}
                                 placeholder={'Digite o rg'}
@@ -151,7 +164,7 @@ const DriverNew = () => {
                                 <input
                                 name='telefonetwo'
                                 type='tel'
-                                autocomplete="off"
+                                autoComplete="off"
                                 className='input'
                                 placeholder={'Digite Km'}
                                 {...register('km')}
@@ -169,7 +182,7 @@ const DriverNew = () => {
                                 className='input'
                                 name='cnh'
                                 type={'text'}
-                                autocomplete="off"
+                                autoComplete="off"
                                 placeholder={'Digite a cnh'}
                                 {...register("cnh")}
                                 onChange={onCnh}
@@ -182,7 +195,7 @@ const DriverNew = () => {
                                 <input
                                 name='telefone'
                                 type='tel'
-                                autocomplete="off"
+                                autoComplete="off"
                                 className='input'
                                 placeholder={'Digite o telefone de contato'}
                                 {...register('telefone')}
@@ -196,7 +209,7 @@ const DriverNew = () => {
                                 <input
                                 name='telefonetwo'
                                 type='tel'
-                                autocomplete="off"
+                                autoComplete="off"
                                 className='input'
                                 placeholder={'Digite um número para recado'}
                                 {...register('telefonetwo')}
@@ -234,7 +247,7 @@ const DriverNew = () => {
                     <div className='d-flex justify-content-around'>
                         <Button value={'Enviar'} />
 
-                        <Link to={'/ownerpage'}>
+                        <Link to={'/rent'}>
                         <Button value={'Cancelar'} />
                         </Link>
                     </div>
@@ -247,4 +260,4 @@ const DriverNew = () => {
      );
 }
 
-export default DriverNew;
+export default RentEdit;

@@ -3,8 +3,11 @@ import Navbar from "./components/Navbar"
 //imports do css
 import './css/app.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Sytle from './css/navbar.module.css'
 //router-dom imports
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+//import react
+import { useState } from "react"
 //import pages
 import Home from "./pages/Home"
 import Options from "./components/Options"
@@ -20,35 +23,42 @@ import Fines from "./pages/Fines"
 import FinesNew from "./components/FinesNew"
 import FinesEdit from "./components/FinesEdit"
 import FinesMore from "./components/FinesMore"
-import Driver from "./pages/Driver"
-import DriverNew from "./components/DriverNew"
+import Rent from "./pages/Rent"
+import RentNew from "./components/RentNew"
+import RentEdit from "./components/RentEdit"
+import RentMore from "./components/RentMore"
+import Button from "./components/Button"
+
 
 const App = () => {
+  const [modal, setModal] = useState()
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path='/newowner' element={<NewDono />} />
-          <Route path="/ownerpage" element={<OwnerPage />} />
-          <Route path="/ownermore/:id" element={<OwnerMore />} />
-          <Route path='/editowner/:id' element={<EditOwner />} />
-          <Route path="/newcar" element={<CarNew />} />
-          <Route path="/garage" element={<Garage />} />
-          <Route path="/more/:id" element={<More />} />
-          <Route path="/edit/:id" element={<Edit />} />
-          <Route path="/fines" element={<Fines />} />
-          <Route path="/finesnew" element={<FinesNew />} />
-          <Route path="/finesedit/:id" element={<FinesEdit />} />
-          <Route path="/finesmore/:id" element={<FinesMore />} />
-          <Route path="/driver" element={<Driver />} />
-          <Route path="/drivernew" element={<DriverNew />} />
-        </Routes>
-        <Navbar />
-        <Options />
-    </BrowserRouter>
-    </div>
+	<div className="App">
+		<BrowserRouter>
+			<Routes>
+			<Route exact path="/" element={<Home />} />
+			<Route path='/newowner' element={<NewDono />} />
+			<Route path="/ownerpage" element={<OwnerPage />} />
+			<Route path="/ownermore/:id" element={<OwnerMore />} />
+			<Route path='/editowner/:id' element={<EditOwner />} />
+			<Route path="/newcar" element={<CarNew />} />
+			<Route path="/garage" element={<Garage />} />
+			<Route path="/more/:id" element={<More />} />
+			<Route path="/edit/:id" element={<Edit />} />
+			<Route path="/fines" element={<Fines />} />
+			<Route path="/finesnew" element={<FinesNew />} />
+			<Route path="/finesedit/:id" element={<FinesEdit />} />
+			<Route path="/finesmore/:id" element={<FinesMore />} />
+			<Route path="/rent" element={<Rent />} />
+			<Route path="/rentnew" element={<RentNew />} />
+			<Route path="/rentedit/:id" element={<RentEdit />} />
+			<Route path="/rentmore/:id" element={<RentMore />} />
+			</Routes>
+			<Navbar/>
+			<Options />
+		</BrowserRouter>
+	</div>
   )
 }
 

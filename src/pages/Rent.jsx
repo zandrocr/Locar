@@ -10,16 +10,16 @@ import '../css/project.css'
 import Loading from "../components/Loading";
 import Button from "../components/Button";
 
-const Driver = () => {
-
+const Rent = () => {
+//component varibles
     const [load, setLoad] = useState(false)
-    const [driver, setDriver] = useState([])
+    const [rent, setRent] = useState([])
 
     useEffect(() => {
         setTimeout(() => {
-            api.get('/car')
+            api.get('/rent')
             .then((response) => {
-                setDriver(response.data)
+                setRent(response.data)
                 setLoad(true)
             })
             .catch(() => {
@@ -29,16 +29,16 @@ const Driver = () => {
     }, [])
 
     function deleteDriver(id){
-        api.delete(`/car/${id}`)
-        setDriver(driver.filter(drivers => drivers.id !== id))
+        api.delete(`/rent/${id}`)
+        setDriver(rent.filter(rents => rents.id !== id))
     }
     return (
     <div className="d-flex col-12 flex-column align-items-center">
         <div className="col-10">
             <div className="d-flex flex-column">
-                <h1 className="title">Motoristas</h1>
+                <h1 className="title">Aluguel</h1>
                 <div>
-                    <Link to='/drivernew'>
+                    <Link to='/rentnew'>
                         <button className="btn">Novo Motorista</button>
                     </Link>
                 </div>
@@ -46,44 +46,44 @@ const Driver = () => {
             <div className="line"></div>
         <div className="post d-flex flex-column flex-sm-row flex-sm-wrap">
             {!load && <Loading />}
-            {driver.map((driver, key) => {
+            {rent.map((rent, key) => {
                 return(
                 <div className="d-felx col-12 col-lg-6 justify-content-around" key={key}>
                     <div className="card">
-                        <h3 className="title">{driver.modelo}</h3>
+                        <h3 className="title">{rent.nome}</h3>
                         <div className="line"></div>
                         <div className="col-12 d-sm-flex justify-content-around">
                             <div className="col-sm-5">
                                 <div>
-                                    <h5 className="title"> Cor </h5>
-                                    <div className="input">{driver.cor}</div>
+                                    <h5 className="title"> Placa </h5>
+                                    <div className="input">{rent.placa}</div>
                                 </div>
                                 <div>
-                                    <h5 className="title"> Placa </h5>
-                                    <div className="input">{driver.placa}</div>
+                                    <h5 className="title"> Valor </h5>
+                                    <div className="input">{rent.value}</div>
                                 </div>
                             </div>
                             {/**separação do conteudo */}
                             <div className="col-sm-5">
                                 <div>
-                                    <h5 className="title"> Situação </h5>
-                                    <div className="input">{driver.situation}</div>
+                                    <h5 className="title"> Telefone </h5>
+                                    <div className="input">{rent.telefone}</div>
                                 </div>
                                 <div>
-                                    <h5 className="title"> Dono </h5>
-                                    <div className="input">{driver.owner}</div>
+                                    <h5 className="title"> Telefone2 </h5>
+                                    <div className="input">{rent.telefonetwo}</div>
                                 </div>
                             </div>
                         </div>
                         <div className="line"></div>
                         <div className="d-flex align-items-center flex-sm-row d-sm-flex justify-content-around">
-                            <Link to={{pathname: `/edit/${driver.id}`}}>
+                            <Link to={{pathname: `/rentedit/${rent.id}`}}>
                                 <Button value={'Editar'} />
                             </Link>
-                            <Link to={{pathname: `/more/${driver.id}`}}>
+                            <Link to={{pathname: `/rentmore/${rent.id}`}}>
                                 <Button value={'Mais'} />
                             </Link>
-                            <Button value={'Apagar'} onClick={() => deleteDriver(driver.id)}/>
+                            <Button value={'Apagar'} onClick={() => deleteDriver(rent.id)}/>
                         </div>
                     </div>
                 </div>
@@ -94,5 +94,5 @@ const Driver = () => {
     </div> );
 }
 
-export default Driver;
+export default Rent;
 

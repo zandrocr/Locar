@@ -5,13 +5,13 @@ import '../css/newproject.css'
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { mask, unMask } from 'remask';
 //import back
 import api from "./Api";
 //import components
 import Button from './Button';
+import { useState, useEffect } from 'react';
 
 
 //menssgem de aviso de erro
@@ -22,28 +22,47 @@ const validationService = yup.object().shape({
     rg: yup.string().required('O rg é obrigatório').min(12, 'Digite corretamente'),
     cnh: yup.string().required('A cnh é obrigatória').min(11, 'Digite corretamente'),
     telefone: yup.string().required('O telefone é obrigatório').min(15, 'Digite corretamente'),
-    telefonetwo: yup.string().min(15, 'Digite corretamente')
+    telefonetwo: yup.string().min(15, 'Digite corretamente'),
+    km: yup.string().required('O KM é obrigatório'),
+    value: yup.string().required('O valor é obrigatório'),
+    placa: yup.string().required('A placa é obrigatório')
 })
 
-const NewOwner = () => {
+const RentNew = () => {
 
     let navigate = useNavigate()
+    const [ driver ,setDriver] = useState([])
+//comands yup
     const {register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(validationService)
     })
-    const addOwner = data => api.post('/owner/', data)
+//list car
+    useEffect(() => {
+        setTimeout(() => {
+          api.get('/car/')
+            .then((response) => {
+                setDriver(response.data)
+          })
+          .catch(() => {
+                console.log(errors)
+          })
+        })
+    }, [])
+//comand new post
+    const addRent = data => api.post('/rent/', data)
     .then(() => {
         console.log('envio efetuado')
-        navigate('../ownerpage')
+        navigate('../rent')
     })
     .catch(() => {
         console.log(errors)
     }, [])
 
+
 //mascaras dos inputs (erro ao fazer a mascara condicionada)
-    const [ value, setvalue ] = useState([])
-    const onChange = ev => {
-        setvalue(mask(unMask(ev.target.value), ['999.999.999-99']))
+    const [ cpf, setCpf ] = useState([])
+    const onCpf = ev => {
+        setCpf(mask(unMask(ev.target.value), ['999.999.999-99']))
     }
     const [ rg, setRg ] = useState([])
     const onRg = ev => {
@@ -65,22 +84,30 @@ const NewOwner = () => {
     const onNascimento = ev => {
       setNascimento(mask(unMask(ev.target.value), ['99/99/9999']))
     }
+    const [ valueAl, setValueAl ] = useState()
+    const onValueAl = ev => {
+      setValueAl(mask(unMask(ev.target.value), ['9,99', '99,99', '999,99', '9.999,99', '99.999,99']))
+    }
+    const [ km, setKm ] = useState()
+    const onKm = ev => {
+        setKm(mask(unMask(ev.target.value), ['999.999']))
+    }
 
     return (
         <div className='project d-flex justify-content-around'>
             <div className='d-flex col-12 flex-column'>
                 <div className='d-flex flex-column align-items-center justify-content-around'>
                     <div className='col-10'>
-                    <h1 className="title">Novo Dono</h1>
+                    <h1 className="title">Novo Aluguel</h1>
                     <div className='line col-12'></div>
-                    <form onSubmit={handleSubmit(addOwner)} className='form d-flex flex-column col-12 justify-content-around'>
+                    <form onSubmit={handleSubmit(addRent)} className='form d-flex flex-column col-12 justify-content-around'>
                     <div className='col-12 d-sm-flex justify-content-around'>
                         <div className='col-sm-5'>
                             <div className='d-flex flex-column'>
                                 <label className="title">Nome</label>
                                 <input
                                 className='input'
-                                autocomplete="off"
+                                autoComplete='off'
                                 name={'nome'}
                                 {...register('nome')}
                                 placeholder={'Digite o nome'}/>
@@ -103,12 +130,12 @@ const NewOwner = () => {
                                 <label className="title">CPF</label>
                                 <input
                                 className='input'
-                                autocomplete="off"
+                                autoComplete="off"
                                 name={'cpf'}
                                 {...register('cpf')}
                                 placeholder={'Digite o cpf'}
-                                onChange={onChange}
-                                value={value}
+                                onChange={onCpf}
+                                value={cpf}
                                 />
                                 <p>{errors.cpf?.message}</p>
                             </div>
@@ -116,7 +143,7 @@ const NewOwner = () => {
                                 <label className="title">RG</label>
                                 <input
                                 className='input'
-                                autocomplete="off"
+                                autoComplete="off"
                                 name={'rg'}
                                 {...register('rg')}
                                 placeholder={'Digite o rg'}
@@ -124,6 +151,20 @@ const NewOwner = () => {
                                 value={rg}
                                 />
                                 <p>{errors.rg?.message}</p>
+                            </div>
+                            <div className='d-flex flex-column'>
+                                <label className="title">Km</label>
+                                <input
+                                name='telefonetwo'
+                                type='tel'
+                                autoComplete="off"
+                                className='input'
+                                placeholder={'Digite Km'}
+                                {...register('km')}
+                                onChange={onKm}
+                                value={km}
+                                />
+                                <p>{errors.km?.message}</p>
                             </div>
                         </div>
 
@@ -134,7 +175,7 @@ const NewOwner = () => {
                                 className='input'
                                 name='cnh'
                                 type={'text'}
-                                autocomplete="off"
+                                autoComplete="off"
                                 placeholder={'Digite a cnh'}
                                 {...register("cnh")}
                                 onChange={onCnh}
@@ -147,7 +188,7 @@ const NewOwner = () => {
                                 <input
                                 name='telefone'
                                 type='tel'
-                                autocomplete="off"
+                                autoComplete="off"
                                 className='input'
                                 placeholder={'Digite o telefone de contato'}
                                 {...register('telefone')}
@@ -161,7 +202,7 @@ const NewOwner = () => {
                                 <input
                                 name='telefonetwo'
                                 type='tel'
-                                autocomplete="off"
+                                autoComplete="off"
                                 className='input'
                                 placeholder={'Digite um número para recado'}
                                 {...register('telefonetwo')}
@@ -169,6 +210,29 @@ const NewOwner = () => {
                                 value={telw}
                                 />
                                 <p>{errors.telefonetwo?.message}</p>
+                            </div>
+                            <div className='d-flex flex-column bd-highlight' >
+                                <label className='title'>Carro</label>
+                                <select className='col-12 input' {...register('placa')}>
+                                <option disabled selected value="">Selecione o tipo</option>
+                                {driver.map((driver) => (
+                                    <option key={driver.id}>{driver.placa}</option>
+                                ))}
+                                </select>
+                                <p>{errors.placa?.message}</p>
+                            </div>
+                            <div className='d-flex flex-column'>
+                                <label className="title">Valor</label>
+                                <input
+                                className='input'
+                                autoComplete='off'
+                                name={'value'}
+                                {...register('value')}
+                                placeholder={'Digite o valor do aluguel'}
+                                onChange={onValueAl}
+                                value={valueAl}
+                                />
+                                <p>{errors.value?.message}</p>
                             </div>
                         </div>
                     </div>
@@ -189,4 +253,4 @@ const NewOwner = () => {
      );
 }
 
-export default NewOwner;
+export default RentNew;

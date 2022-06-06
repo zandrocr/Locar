@@ -24,13 +24,15 @@ const validationService = yup.object().shape({
 })
 
 const EditOwner = () => {
-
+//variables
     const {id} = useParams()
     let navigate = useNavigate()
+    const [ value, setvalue ] = useState()
+//comand yup
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
         resolver: yupResolver(validationService)
     })
-    //comand edit
+//comand edit
     const editOwner = data => Api.put(`/owner/${id}`, data)
     .then(() => {
         console.log('envio efetuado')
@@ -39,15 +41,15 @@ const EditOwner = () => {
     .catch(() => {
         console.log(errors)
     }, [])
+//get the owner
     useEffect(() => {
       Api.get(`/owner/${id}`)
       .then((response) => {
         reset(response.data)
       })
     }, [])
-
 //mascaras dos inputs (erro ao fazer a mascara condicionada)
-    const [ value, setvalue ] = useState()
+
     const onChange = ev => {
         setvalue(mask(unMask(ev.target.value), ['999.999.999-99']))
     }

@@ -24,7 +24,7 @@ const validationService = yup.object().shape({
   obs: yup.string().max(100, 'Maximo de 100 caracteres.'),
   situation: yup.string().max(100, 'Maximo de 100 caracteres.'),
   value: yup.string().required('O valor é obrigatório'),
-  local: yup.string().max(100, 'Maximo de 100 caracteres.'),
+  local: yup.string().required('O local é obrigatório').max(100, 'Maximo de 100 caracteres.'),
   indic: yup.string().required('O data de indicação é obrigatório'),
   pay: yup.string().required('O status do pagamento é obrigatório'),
 })
@@ -209,7 +209,10 @@ const FinesNew = () => {
                   autoComplete='off'
                   name={'local'}
                   {...register('local')}
-                  placeholder={'Local do ocorrido'}/>
+                  placeholder={'Digite o valor da multa'}
+                  onChange={onValue}
+                  value={value}
+                  />
                   <p>{errors.local?.message}</p>
                 </div>
                 <div className='d-flex flex-column bd-highlight'>
