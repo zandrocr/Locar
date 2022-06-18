@@ -11,39 +11,41 @@ import Sytle from '../css/navbar.module.css'
 
 const Navbar = () => {
 //alterar o status do checkbox de checked para unchecked precionando .navbar
-    let [modal, setModal] = useState()
+    let [modal, setModal] = useState(false)
 //dunction close menu
-    function onClick(){
-        e.preventDefault()
-        {modal === true ? modal = false : modal }
+    let modChange = () =>{
+        setModal(!modal)
+    }
+    function onClose() {
+        modChange.target.value == true ? modal = false : modal
     }
 
     return(
         <nav>
-            <input type="checkbox" name="check" id="check" onChange={setModal} />
+            <input type="checkbox" name="check" id="check" onChange={modChange} />
             <label className={Sytle.menu} htmlFor="check">
                 <div className={Sytle.menu_line}></div>
                 <div className={Sytle.menu_line}></div>
                 <div className={Sytle.menu_line}></div>
             </label>
             <div className={Sytle.nav}>
-                <Link to='/' onClick={onClick}>
+                <Link to='/' onClick={onClose}>
                     <h2> Inova </h2>
                 </Link>
-                <nav className={Sytle.navbar} >
-                    <Link to='/ownerpage' className="d-flex flex-column align-items-center" onClick={onClick}>
+                <nav className={`${Sytle.navbar} justify-content-around`} >
+                    <Link to='/ownerpage' className="d-flex flex-column align-items-center" onClick={onClose}>
                         <img className="img" src={owner} alt="donos"/>
                         <p>Donos</p>
                     </Link>
-                    <Link to='/garage' className="d-flex flex-column align-items-center" onClick={onClick}>
+                    <Link to='/garage' className="d-flex flex-column align-items-center" onClick={onClose}>
                         <img className="img" src={car} alt="garagem" />
                         <p>Garagem</p>
                     </Link>
-                    <Link to='/rent' className="d-flex flex-column align-items-center" onClick={onClick}>
+                    <Link to='/rent' className="d-flex flex-column align-items-center" onClick={onClose}>
                         <img className="img" src={rent} alt="Aluguel" />
                         <p>Aluguel</p>
                     </Link>
-                    <Link to='/fines' className="d-flex flex-column align-items-center" onClick={onClick}>
+                    <Link to='/fines' className="d-flex flex-column align-items-center" onClick={onClose}>
                         <img className="img" src={fine} alt="multas" />
                         <p>Multas</p>
                     </Link>

@@ -3,11 +3,8 @@ import Navbar from "./components/Navbar"
 //imports do css
 import './css/app.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Sytle from './css/navbar.module.css'
 //router-dom imports
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-//import react
-import { useState } from "react"
 //import pages
 import Home from "./pages/Home"
 import Options from "./components/Options"
@@ -27,11 +24,9 @@ import Rent from "./pages/Rent"
 import RentNew from "./components/RentNew"
 import RentEdit from "./components/RentEdit"
 import RentMore from "./components/RentMore"
-import Button from "./components/Button"
 
 
 const App = () => {
-  const [modal, setModal] = useState()
 
   return (
 	<div className="App">

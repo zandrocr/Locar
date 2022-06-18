@@ -13,11 +13,13 @@ import rent from '../svg/rent.png'
 
 const Options = () => {
 //alterar o status do checkbox de checked para unchecked precionando .navbar
-  	let [modal, setModal] = useState()
+let [modal, setModal] = useState(false)
 //dunction close menu
+    let modChange = () =>{
+        setModal(!modal)
+    }
     function onClick(){
-        e.preventDefault()
-        {modal === true ? modal = false : modal }
+        {modal.target.value == true ? modal = false : modal }
     }
 
   return (
@@ -27,7 +29,7 @@ const Options = () => {
           type="checkbox"
           name="optionCar"
           id="optionCar"
-          onChange={setModal} />
+          onChange={modChange} />
         <nav className='d-flex flex-column justify-content-center align-items-center'>
           <Link
             to='/finesnew'
