@@ -1,16 +1,57 @@
 {
-  "owner": [],
+  "owner": [
+    {
+      "nome": "amanda",
+      "nascimento": "22/11/1998",
+      "cpf": "422.335.554-58",
+      "rg": "12.522.215-x",
+      "cnh": "12245456568",
+      "telefone": "(55) 83556-8788",
+      "telefonetwo": "(44) 58774-5899",
+      "id": 1
+    },
+    {
+      "nome": "Gustavo",
+      "nascimento": "22/12/1998",
+      "cpf": "554.488.779-96",
+      "rg": "12.264.566-6",
+      "cnh": "55563232323",
+      "telefone": "(11) 22555-4554",
+      "telefonetwo": "(11) 12555-6885",
+      "id": 2
+    },
+    {
+      "nome": "miguel",
+      "nascimento": "11/01/1999",
+      "cpf": "455.121.224-85",
+      "rg": "11.225.412-2",
+      "cnh": "12122522522",
+      "telefone": "(12) 45588-5566",
+      "telefonetwo": "(12) 55585-5258",
+      "id": 3
+    },
+    {
+      "nome": "maria fernanda",
+      "nascimento": "10/11/1989",
+      "cpf": "445.211.145-68",
+      "rg": "44.556.587-4",
+      "cnh": "11245561123",
+      "telefone": "(11) 23554-6688",
+      "telefonetwo": "(11) 12223-5558",
+      "id": 4
+    }
+  ],
   "car": [
     {
       "modelo": "fiat",
-      "cor": "rosa",
-      "ano": "2020",
-      "placa": "111-1224",
-      "owner": "Maria Clara",
-      "renavam": "11254452365",
-      "chassi": "12234512512551225",
+      "cor": "brnaco",
+      "ano": "2015",
+      "placa": "555-4sa8",
+      "owner": "maria fernanda",
+      "renavam": "12554542320",
+      "chassi": "22255456555556565",
       "situation": "indisponivel",
-      "describe": "limpeza",
+      "describe": "\n",
       "id": 5
     },
     {
@@ -28,18 +69,18 @@
   ],
   "fine": [
     {
-      "placa": "111-1224",
-      "infrator": "gfasdgasdg",
+      "placa": "555-4sa8",
+      "infrator": "gustavo",
       "ait": "2213q241242142142142",
       "codInfra": "2 3 4 2 3 4 3 4",
-      "dataInfra": "11/11/2333",
-      "dataIndic": "11/31/3111",
+      "dataInfra": "22/11/2022",
+      "dataIndic": "22/11/2022",
       "obs": "dasd",
       "situation": "12321",
       "value": "1.232,13",
       "local": "123213213",
       "indic": "11/21/3333",
-      "pay": "Não Pago",
+      "pay": "Pago",
       "id": 3
     },
     {
@@ -76,16 +117,29 @@
   "rent": [
     {
       "nome": "marmita",
-      "nascimento": "12/11/1212",
-      "cpf": "131.111.111-11",
-      "rg": "11.111.111-1",
-      "km": "111.111",
-      "cnh": "11111111111",
-      "telefone": "(11) 11111-1111",
-      "telefonetwo": "(11) 11111-1111",
+      "nascimento": "15/04/1994",
+      "cpf": "775.426.684-55",
+      "rg": "22.544.485-6",
+      "km": "540.000",
+      "cnh": "22145585667",
+      "telefone": "(36) 65554-5888",
+      "telefonetwo": "(36) 55488-8888",
       "placa": "111-1224",
-      "value": "11.111,11",
+      "value": "304,56",
       "id": 1
+    },
+    {
+      "nome": "rafael",
+      "nascimento": "11/12/1998",
+      "cpf": "122.554.856-99",
+      "rg": "11.232.554-5",
+      "km": "455.588",
+      "cnh": "41225456525",
+      "telefone": "(11) 12245-5545",
+      "telefonetwo": "(11) 11225-4558",
+      "placa": "555-4sa8",
+      "value": "505,00",
+      "id": 2
     }
   ]
 }
